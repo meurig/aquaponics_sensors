@@ -75,15 +75,6 @@ while True:
 		worksheet = login_open_sheet(CLIENT, get_key(), GDOCS_SPREADSHEET_NAME)
 
 	# Attempt to get sensor reading.
-	#humidity, temp = Adafruit_DHT.read(DHT_TYPE, DHT_PIN)
-	#temp1, temp2, temp3, humidity = get_sensor_data(/dev/
-
-	# Skip to the next reading if a valid measurement couldn't be taken.
-	#if humidity is None or temp is None:
-		#time.sleep(2)
-		#continue
-
-	# Attempt to get sensor reading.
 	temp1, temp2, temp3, humidity = get_sensor_values(ser)
 
 	# Skip to the next reading if a valid measurement couldn't be taken.
