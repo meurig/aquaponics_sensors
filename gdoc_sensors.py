@@ -48,7 +48,10 @@ def receiving(ser):
 			#like so: if lines[-2]: last_received = lines[-2]
 			buffer = lines[-1]
 
-Thread(target=receiving, args=(ser,)).start()
+t = Thread(target=receiving, args=(ser,))
+# This should cause the daemon thread to quit when the master is quit
+t.daemon = True
+t.start()
 
 def get_sensor_values(ser):
 	last_value = last_received
