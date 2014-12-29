@@ -14,7 +14,7 @@
 # Process name ( For display )
 NAME=gdoc_daemon
 # Daemon name, where is the actual executable
-DAEMON=/home/pi/arduino_sensors/gdoc_daemon.py
+DAEMON=/home/pi/aquaponics_sensors/gdoc_daemon.py
 
 # If the daemon is not there, then exit.
 test -x $DAEMON || exit 5
