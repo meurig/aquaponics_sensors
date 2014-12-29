@@ -1,0 +1,23 @@
+### BEGIN INIT INFO
+# Provides:          gdoc_daemon
+# Required-Start:    networking
+# Required-Stop:     networking
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Daemon for logging sensor values to google docs
+# Description:       This daemon reads sensor values from an attached
+#                    arduino and logs them to a google spreadsheet
+### END INIT INFO
+
+# Using the lsb functions to perform the operations.
+. /lib/lsb/init-functions
+# Process name ( For display )
+NAME=gdoc_daemon
+# Daemon name, where is the actual executable
+DAEMON=/home/pi/arduino_sensors/gdoc_daemon.py
+
+# If the daemon is not there, then exit.
+test -x $DAEMON || exit 5
+
+# pass all arguments on to the daemon
+$DAEMON $@
