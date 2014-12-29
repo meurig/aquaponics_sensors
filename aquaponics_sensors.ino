@@ -64,6 +64,6 @@ void loop(void)
   Serial.print(",");
   Serial.print(dhtHumidity);
   
-  Serial.print("]\n\r");
+  Serial.print("]\n");
 }
 
