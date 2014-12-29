@@ -6,10 +6,7 @@
 #   sudo pip install oauth2client
 # also depends on python-openssl for using the KEY_FILE
 #   sudo apt-get install python-openssl
-# and the python-daemon library to behave correctly as a daemon
-#   sudo apt-get install python-daemon
 
-import daemon
 import datetime
 import gspread
 import os
@@ -112,5 +109,3 @@ def do_main_program():
 		# Wait 30 seconds before continuing
 		print 'Wrote a row to {0}'.format(GDOCS_SPREADSHEET_NAME)
 		time.sleep(FREQUENCY_SECONDS)
-
-do_main_program()
