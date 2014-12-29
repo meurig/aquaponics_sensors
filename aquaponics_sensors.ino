@@ -49,6 +49,7 @@ void loop(void)
 { 
   delay(2000);
   tempSensors.requestTemperatures();
+  Serial.print("[");
   printTemperature(insideThermometer);
   Serial.print(",");
   printTemperature(outsideThermometer);
@@ -63,6 +64,6 @@ void loop(void)
   Serial.print(",");
   Serial.print(dhtHumidity);
   
-  Serial.print("\n\r");
+  Serial.print("]\n\r");
 }
 
