@@ -79,18 +79,28 @@ while True:
 	#temp1, temp2, temp3, humidity = get_sensor_data(/dev/
 
 	# Skip to the next reading if a valid measurement couldn't be taken.
-	# This might happen if the CPU is under a lot of load and the sensor
-	# can't be reliably read (timing is critical to read the sensor).
 	#if humidity is None or temp is None:
 		#time.sleep(2)
 		#continue
 
+	# Attempt to get sensor reading.
 	temp1, temp2, temp3, humidity = get_sensor_values(ser)
 
-	print 'Temp1: {0:0.1f} C'.format(float(temp1))
-	print 'Temp2: {0:0.1f} C'.format(float(temp2))
-	print 'Temp3: {0:0.1f} C'.format(float(temp3))
-	print 'Humidity:    {0:0.1f} %'.format(float(humidity))
+	# Skip to the next reading if a valid measurement couldn't be taken.
+	if temp1 is None or temp2 is None or temp3 is None or humidity is None:
+		time.sleep(2)
+		continue
+
+	try:
+		print 'Temp1: {0:0.1f} C'.format(float(temp1))
+		print 'Temp2: {0:0.1f} C'.format(float(temp2))
+		print 'Temp3: {0:0.1f} C'.format(float(temp3))
+		print 'Humidity:    {0:0.1f} %'.format(float(humidity))
+	except:
+		# Error converting string to float, probably bad data
+		print 'Parsing error, will rety'
+		time.sleep(2)
+		continue
  
 	# Append the data in the spreadsheet, including a timestamp
 	try:
